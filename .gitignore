@@ -8,3 +8,5 @@ node_modules/
 email-preview.html
 # Local editor/agent settings
 .claude/
+.vercel
+.env*
