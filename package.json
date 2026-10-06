@@ -1,0 +1,9 @@
+{
+  "name": "test-em-all",
+  "private": true,
+  "description": "Test EM All: the Engineering Manager quiz",
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "preview-email": "node scripts/preview-email.js"
+  }
+}

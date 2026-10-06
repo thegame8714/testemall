@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Test EM All — The Engineering Manager Quiz</title>
+  <meta name="description" content="A 5-minute quiz for engineering managers. Gear up as you play, discover your manager archetype, and find the one shift that will make your team more productive, happier and better connected, with AI on your side." />
+  <meta property="og:title" content="Are you managing… or just very busy?" />
+  <meta property="og:description" content="20 real scenarios. 4 pillars. Discover your manager archetype and your next step to a more productive, happier team." />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Test EM All" />
+  <meta name="theme-color" content="#FAFAF7" />
+  <link rel="icon" type="image/png" href="img/icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg" aria-hidden="true">
+    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+    <div class="grid"></div>
+  </div>
+  <canvas id="confetti" aria-hidden="true"></canvas>
+
+  <header class="topbar">
+    <a class="logo" href="#" data-action="home" aria-label="Home"><img class="logo-img" src="img/logo.png" alt="Test EM All" width="900" height="204" /></a>
+    <span class="byline" data-cfg="coachName"></span>
+  </header>
+
+  <main>
+    <!-- ============================== INTRO -->
+    <section id="intro" class="screen active" aria-labelledby="hero-title">
+      <div class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="pulse"></span> A 5-minute diagnostic for Engineering Managers</p>
+          <h1 id="hero-title">Are you <em>managing</em>…<br />or just very <span class="scribble">busy?</span></h1>
+          <p class="lede">Play through 20 real situations every Engineering Manager faces and watch your avatar gear up as you go. Then get your personal playbook for a <strong>more productive team</strong>, a <strong>place people love to work</strong>, and <strong>communication that lands</strong>, with <strong>AI on your side</strong>.</p>
+          <div class="avatar-pick" role="radiogroup" aria-label="Choose your avatar">
+            <span class="ap-label">Choose your avatar</span>
+            <button class="ap-opt" role="radio" aria-checked="true" data-action="avatar" data-avatar="m"><span class="ap-thumb"></span>Male</button>
+            <button class="ap-opt" role="radio" aria-checked="false" data-action="avatar" data-avatar="f"><span class="ap-thumb"></span>Female</button>
+          </div>
+          <div class="cta-row">
+            <button class="btn btn-primary btn-xl btn-block" data-action="start">Start the quiz <span class="arrow">→</span></button>
+          </div>
+          <ul class="chips">
+            <li>⏱️ 5 minutes</li><li>🎉 Have fun</li>
+          </ul>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="hero-stage"><div class="hero-mascot" id="hero-mascot"></div></div>
+          <div class="hero-pills">
+            <span class="hpill" data-p="leadership" style="--c:#0F7A3E;--ci:#0B5A2E">🧭 Leadership</span>
+            <span class="hpill" data-p="communication" style="--c:#1463FF;--ci:#0B47C9">📣 Communication</span>
+            <span class="hpill" data-p="ai" style="--c:#0891B2;--ci:#0E6A80">🤖 AI</span>
+            <span class="hpill" data-p="coaching" style="--c:#FF7A2B;--ci:#C2410C">🌱 Coaching</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="get-grid">
+        <article class="get-card reveal">
+          <div class="get-ico">🧑‍💼</div>
+          <h3>Gear up as you play</h3>
+          <p>Your answers equip your manager with Leadership, Communication, AI and Coaching skills, live as you go.</p>
+        </article>
+        <article class="get-card reveal">
+          <div class="get-ico">🎯</div>
+          <h3>Find your #1 focus area</h3>
+          <p>The one shift that will make the biggest difference to your team right now, with practical actions you can try next week.</p>
+        </article>
+        <article class="get-card reveal">
+          <div class="get-ico">🤝</div>
+          <h3>Build a team that thrives</h3>
+          <p>Ideas to boost productivity, create an environment people enjoy, and communicate better, with AI doing some of the heavy lifting.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============================== QUIZ -->
+    <section id="quiz" class="screen">
+      <div class="quiz-layout">
+        <aside class="sheet" aria-label="Your manager character">
+          <div class="sheet-head"><span class="sheet-title">Your manager</span></div>
+          <div class="sheet-avatar" id="sheet-avatar"></div>
+          <div class="skills" id="skills" aria-live="polite"></div>
+        </aside>
+
+        <div class="quiz-main">
+          <div class="stage" id="stage" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== ANALYZING -->
+    <section id="analyzing" class="screen">
+      <div class="analyze">
+        <div class="radar-scan" aria-hidden="true">
+          <div class="sweep"></div>
+          <div class="ring"></div><div class="ring r2"></div><div class="ring r3"></div>
+          <span class="blip" style="--x:30%;--y:28%;--d:.2s"></span>
+          <span class="blip" style="--x:68%;--y:40%;--d:.9s"></span>
+          <span class="blip" style="--x:44%;--y:70%;--d:1.5s"></span>
+          <span class="blip" style="--x:22%;--y:56%;--d:2.1s"></span>
+        </div>
+        <h2>Analysing your management style…</h2>
+        <ul class="steps" id="analyze-steps"></ul>
+      </div>
+    </section>
+
+    <!-- ============================== GATE -->
+    <section id="gate" class="screen">
+      <div class="gate">
+        <div class="gate-teaser">
+          <p class="eyebrow">Your manager is ready</p>
+          <div class="char-card">
+            <div class="char-avatar" id="gate-avatar"></div>
+            <div class="char-info">
+              <div class="char-title">All four skills achieved</div>
+              <div class="char-gear" id="gate-gear"></div>
+            </div>
+          </div>
+          <div class="class-locked">
+            <div class="cl-text">
+              <div class="cl-label">Your manager archetype</div>
+              <div class="cl-name" aria-label="Hidden until you unlock">? ? ?</div>
+              <div class="cl-blur" aria-hidden="true"><span></span><span></span><span class="short"></span></div>
+            </div>
+            <div class="lock" id="lock">
+              <svg viewBox="0 0 48 48" aria-hidden="true">
+                <path class="shackle" d="M15 22 V15 a9 9 0 0 1 18 0 V22" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" />
+                <rect x="10" y="21" width="28" height="22" rx="6" fill="currentColor" />
+                <circle cx="24" cy="31" r="3" fill="#fff" /><rect x="22.5" y="31" width="3" height="6" rx="1.5" fill="#fff" />
+              </svg>
+            </div>
+          </div>
+          <p class="gate-hint">We’ve matched your answers to one of six manager archetypes. Unlock it to see which one you are, and what it means for your next promotion.</p>
+        </div>
+
+        <form class="gate-form" id="gate-form" novalidate>
+          <h2>Unlock your full <span class="hl">Manager Report</span></h2>
+          <ul class="unlock-list">
+            <li>🃏 Your manager archetype (and what it costs you)</li>
+            <li>📊 Your scores across all 4 pillars</li>
+            <li>🎯 Your #1 focus area with a 3-step action plan</li>
+            <li>🪜 Exactly where you sit on the road to Director</li>
+            <li>📝 A review of every answer, with the Director move</li>
+          </ul>
+          <label class="field">
+            <span>First name <em>(optional)</em></span>
+            <input type="text" name="firstName" autocomplete="given-name" placeholder="Alex" />
+          </label>
+          <label class="field">
+            <span>Work or personal email</span>
+            <input type="email" name="email" autocomplete="email" placeholder="alex@company.com" required />
+            <small class="err" id="email-err" role="alert"></small>
+          </label>
+          <input type="text" name="company_website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+          <label class="check">
+            <input type="checkbox" name="consent" required />
+            <span>Send me my report plus occasional practical tips for engineering leaders. Unsubscribe anytime.</span>
+          </label>
+          <small class="err" id="consent-err" role="alert"></small>
+          <button class="btn btn-primary btn-xl btn-block" type="submit" id="unlock-btn">Unlock my results <span class="arrow">🔓</span></button>
+          <p class="fine">No spam. No selling your data. <a data-cfg-href="privacyUrl" href="#">Privacy</a></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- ============================== RESULTS -->
+    <section id="results" class="screen">
+      <div id="results-root"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>Made with ☕ and too many 1:1s by <span data-cfg="coachName"></span></span>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="content.js"></script>
+  <script src="scoring.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
