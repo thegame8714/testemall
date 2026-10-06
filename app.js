@@ -573,7 +573,7 @@
         </div>
         <div class="radar-wrap reveal">
           ${radar.html}
-          <div class="radar-legend"><span><i></i>You</span><span><i class="d"></i>Director-level benchmark</span></div>
+          <div class="radar-legend"><span><i></i>You</span><span><i class="d"></i>High-performing benchmark</span></div>
         </div>
       </div>
 
@@ -583,7 +583,7 @@
             <p class="eyebrow">Overall manager score</p>
             <div class="overall"><span class="big" id="overall-num">0</span><span class="of">/100</span></div>
             <div class="stage-name">${stage.name}</div>
-            <p class="stage-line">${stage.line}${nextStage ? ` Next rung: <strong>${nextStage.name}</strong>.` : ""}</p>
+            <p class="stage-line">${stage.line}${nextStage ? ` Next step: <strong>${nextStage.name}</strong>.` : ""}</p>
             <div class="pillar-bars" style="margin-top:26px">
               ${PILLARS.map((p) => `
                 <div class="pbar" style="${pv(p)}">
@@ -593,7 +593,7 @@
                 </div>`).join("")}
             </div>
           </div>
-          <div class="ladder reveal" aria-label="Career ladder">
+          <div class="ladder reveal" aria-label="Manager levels">
             ${Q.stages.slice().reverse().map((s, ri) => {
               const i = Q.stages.length - 1 - ri;
               const cls = i === r.stageIdx ? "here" : i < r.stageIdx ? "passed" : "";
@@ -606,8 +606,8 @@
       <section class="section">
         <div class="section-head reveal">
           <p class="eyebrow">🎯 Your #1 focus area</p>
-          <h2>This is where your next promotion is hiding.</h2>
-          <p>Improving your weakest pillar will do more for your career than polishing your strongest one. Here’s your plan for the next 30 days.</p>
+          <h2>This is where your biggest win is hiding.</h2>
+          <p>Improving your weakest pillar will do more for your team than polishing your strongest one. Here’s your plan for the next 30 days.</p>
         </div>
         <div class="focus-card reveal" style="${pv(r.focus)}">
           <div class="f-top"><span class="badge">Priority #1</span><span class="badge soft">${r.pct[r.focus]}% · ${bandLabel[r.band(r.pct[r.focus])]}</span></div>
@@ -649,17 +649,17 @@
 
       <section class="section">
         <div class="section-head reveal">
-          <p class="eyebrow">🪜 The road to Director</p>
-          <h2>What changes at each rung</h2>
-          <p>Promotions don’t reward doing your current job harder. They reward already operating at the next level. Here’s where you sit in each pillar.</p>
+          <p class="eyebrow">🧭 What great looks like</p>
+          <h2>How each pillar grows</h2>
+          <p>Great managers aren’t the ones working hardest. They build teams that get things done, enjoy working together and communicate well. Here’s where you are in each pillar, and what the next step looks like.</p>
         </div>
         <table class="road reveal">
-          <thead><tr><th></th><th>EM</th><th>Senior EM</th><th>Director</th></tr></thead>
+          <thead><tr><th></th><th>Foundation</th><th>Strong</th><th>Exceptional</th></tr></thead>
           <tbody>
             ${PILLARS.map((p) => {
               const here = col[r.band(r.pct[p])];
               return `<tr style="${pv(p)}"><td>${Q.pillars[p].icon} ${Q.pillars[p].name}</td>
-                ${Q.ladder[p].map((t, i) => `<td class="${i === here ? "here" : ""}" data-l="${["EM", "Senior EM", "Director"][i]}">${t}</td>`).join("")}</tr>`;
+                ${Q.ladder[p].map((t, i) => `<td class="${i === here ? "here" : ""}" data-l="${["Foundation", "Strong", "Exceptional"][i]}">${t}</td>`).join("")}</tr>`;
             }).join("")}
           </tbody>
         </table>
@@ -667,13 +667,13 @@
 
       <section class="section">
         <details class="review reveal">
-          <summary><span>📝 Review your ${state.answers.length} answers <small style="font:500 14px var(--body);color:var(--muted)"> · you matched the Director move ${matched}/${state.answers.length} times</small></span><span class="chev">⌄</span></summary>
+          <summary><span>📝 Review your ${state.answers.length} answers <small style="font:500 14px var(--body);color:var(--muted)"> · you picked the best move ${matched}/${state.answers.length} times</small></span><span class="chev">⌄</span></summary>
           <ol class="review-list">
             ${state.answers.map((a) => `
               <li class="rv" style="${pv(a.pillar)}">
                 <div class="rv-q">${Q.pillars[a.pillar].icon} ${a.q}</div>
                 <div class="rv-row"><b>You said:</b> ${a.a}</div>
-                ${a.s === 3 ? `<div class="rv-row match">✓ That’s the Director move.</div>` : `<div class="rv-row"><b>Director move:</b> ${a.best}</div>`}
+                ${a.s === 3 ? `<div class="rv-row match">✓ That’s the best move.</div>` : `<div class="rv-row"><b>Best move:</b> ${a.best}</div>`}
                 ${a.module ? `<div class="rv-mod">Covered in ${esc(CFG.programName)} · ${a.module}</div>` : ""}
               </li>`).join("")}
           </ol>

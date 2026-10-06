@@ -29,7 +29,7 @@ __root.EMQ_CONFIG = {
     "AI as your leadership partner: decisions, capacity trade-offs and hard conversations",
     "Unbiased Reading and Creating Clarity, so your communication lands with each person",
     "A repeatable way to turn around underperformers without a PIP",
-    "Build the evidence-based case for the recognition and promotion you’ve earned"
+    "Make your team’s impact visible, and get the recognition it deserves"
   ],
 
   ctaLabel: "Book your Breakthrough Call",

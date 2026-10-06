@@ -2,7 +2,7 @@
    QUIZ CONTENT — questions, coach notes, results copy.
    Questions are built around the themes of the "Refactor Your Leadership"
    program (coaching.fabiosalimbeni.com).
-   Scores: 0 = ouch, 1 = meh, 2 = solid, 3 = senior/director move.
+   Scores: 0 = ouch, 1 = meh, 2 = solid, 3 = the best move.
    Option order is shuffled at runtime, so write them in any order.
    Quips aren’t shown during the quiz: they appear in the post-email answer review,
    together with the program module that covers the topic (optional `module`).
@@ -50,30 +50,30 @@ __root.QUIZ = {
     {
       pillar: "leadership",
       module: "Module 6 · Amplifying Your Leadership",
-      q: "Your VP wants the platform migration done this quarter. Your PM wants three new features. Both say theirs is “the priority”. Your team is looking at you. You…",
+      q: "Your VP wants the platform migration done this quarter. Your PM wants three new features. Both call theirs “the priority”, and your team can’t do both. You…",
       options: [
-        { t: "Say yes to both and quietly plan some weekend work. We’ll figure it out.", s: 0,
-          quip: "Absorbing conflicting directives yourself is how EMs burn out and teams stop trusting the plan. The pressure needs to be visible, not hidden in your weekends." },
-        { t: "Go with the VP. Hierarchy wins.", s: 1,
-          quip: "Safe for you, costly for your relationship with Product. A decision got made, but nobody owns the trade-off." },
-        { t: "Ask the team to split their time 50/50 so everyone’s happy.", s: 1,
-          quip: "Splitting focus feels fair and usually means nothing ships. Half-done is the most expensive outcome." },
-        { t: "Put the capacity and the trade-offs on one page, get the VP and PM in a room, and have them choose explicitly.", s: 3,
-          quip: "That’s capacity-conflict management. You don’t absorb the conflict: you make it visible and get the right people to own the decision." }
+        { t: "Ask the team which they’d rather work on, and go with the majority.", s: 1,
+          quip: "Involving the team feels empowering, but this is a business trade-off. A vote hands it to people who aren’t accountable for the outcome." },
+        { t: "Make the trade-off explicit to both and ask them to agree the order.", s: 3,
+          quip: "You don’t absorb the conflict or decide it for them: you make it visible and get the accountable people to own it." },
+        { t: "Commit to the migration, since it comes from higher up, and negotiate a reduced feature scope with the PM so nobody ends up fully disappointed.", s: 1,
+          quip: "Diplomatic, but hierarchy made the call and the compromise quietly overloads the team." },
+        { t: "Build a weighted scoring model of both initiatives and let the numbers decide.", s: 2,
+          quip: "Data helps the conversation, but a spreadsheet can’t own a decision. The VP and PM still need to agree." }
       ]
     },
     {
       pillar: "leadership",
-      q: "Be honest: in senior leadership meetings, you mostly feel…",
+      q: "In a senior leadership meeting, a VP proposes a plan you believe will hurt your team’s delivery. You’re the most junior person in the room. You…",
       options: [
-        { t: "Like an engineer who wandered into the wrong meeting.", s: 0,
-          quip: "The confidence gap is real and very common. You were trained for the old version of the job. Feeling legitimate comes from practice, not from a title." },
-        { t: "Fine, as long as nobody asks me anything non-technical.", s: 1,
-          quip: "Staying in technical territory keeps you safe but small. The leaders who get promoted bring a point of view on people, priorities and trade-offs." },
-        { t: "Prepared, but I tend to stay quiet unless someone asks me.", s: 2,
-          quip: "Solid base. Next step: walk in with one opinion you’re ready to defend. Being asked isn’t the same as being heard." },
-        { t: "Like a peer. I bring a clear point of view and I’m comfortable disagreeing.", s: 3,
-          quip: "That’s a credible leader. You’re not waiting for permission to lead." }
+        { t: "Stay quiet, then raise it with your manager afterwards so you don’t undermine anyone publicly.", s: 1,
+          quip: "Respectful, but the decision may be made by then. Credibility comes from contributing in the room." },
+        { t: "Name the risk in a sentence or two and offer to follow up with data.", s: 3,
+          quip: "Brief, specific and constructive. That’s how you show up as a peer, whatever your title." },
+        { t: "Back the plan publicly for alignment, then adapt it quietly for your team.", s: 0,
+          quip: "That’s not “disagree and commit”: it’s agreeing, then not committing. It erodes trust when it surfaces." },
+        { t: "Ask clarifying questions until the room spots the problem itself.", s: 2,
+          quip: "Clever, but it can read as passive or even manipulative. Sometimes the strongest move is to say it plainly." }
       ]
     },
     {
@@ -81,76 +81,76 @@ __root.QUIZ = {
       module: "Module 7 · Creating Clarity",
       q: "You find out your skip-level has been assigning work directly to one of your engineers. Again. You…",
       options: [
-        { t: "Let it slide. Better not to make waves upward.", s: 0,
-          quip: "Every time it slides, your authority shrinks a little and your team learns that the real decisions happen around you." },
-        { t: "Have a word with the engineer about following the process.", s: 0,
-          quip: "That puts your report in the middle of a leadership problem. This conversation belongs upward, not downward." },
-        { t: "Mention it vaguely in my next 1:1 with my manager.", s: 1,
-          quip: "Right instinct, but vague complaints rarely change anything. Bring the specific impact and a proposal." },
-        { t: "Raise it with my skip-level directly: show the impact on priorities and agree how requests should flow from now on.", s: 3,
-          quip: "Structure restored without drama. You fixed the system, not just the incident, and rebuilt the trust in your leadership chain." }
+        { t: "Thank your skip-level for the interest, then ask the engineer to route future requests through you.", s: 1,
+          quip: "Polite upward, but it puts your engineer in the middle of a leadership problem." },
+        { t: "Raise it with your skip-level directly: explain what it did to the team’s priorities, and agree together how requests should reach the team from now on.", s: 3,
+          quip: "You fix the system, not just the incident, and rebuild trust in the leadership chain." },
+        { t: "Let it continue, but add the work to the sprint board so it’s visible.", s: 0,
+          quip: "Visibility without structure. The bypassing continues, now with a ticket attached." },
+        { t: "Ask your own manager to handle it, since the conversation sits above your level.", s: 1,
+          quip: "Sounds appropriate, but it outsources a conversation you’re best placed to have." }
       ]
     },
-
     {
       pillar: "leadership",
       module: "Module 6 · Amplifying Your Leadership",
-      q: "Look at your calendar from last week. How much of it was reactive firefighting versus work you chose to do?",
+      q: "Most of your week goes on reactive work: pings, escalations, quick decisions. What’s your first move?",
       options: [
-        { t: "Calendar? I live in Slack. It’s all reactive.", s: 0,
-          quip: "When reactive work eats your week, the strategic part of the job, the part you get promoted for, quietly disappears." },
-        { t: "Mostly reactive, but I catch up on the real work in the evenings.", s: 1,
-          quip: "That’s the overwhelm talking. Doing the job in your evenings isn’t sustainable, and it hides the real capacity problem." },
-        { t: "About half and half. I protect a couple of focus blocks.", s: 2,
-          quip: "Good discipline. Next step: look at what keeps landing on you, and design it out." },
-        { t: "I protect time for my priorities, and I’ve delegated or automated most of the reactive work.", s: 3,
-          quip: "That’s leading at a sustainable pace. You’ve reclaimed time for the work only you can do." }
+        { t: "Block two no-meeting mornings a week for focused work.", s: 2,
+          quip: "Good hygiene, but it treats the symptom. The interruptions will be waiting when the block ends." },
+        { t: "Find what keeps landing on you and redesign it so it doesn’t need you.", s: 3,
+          quip: "Fix the source, not the calendar. That’s how you reclaim time for good." },
+        { t: "Be more responsive, so small issues are resolved before they turn into bigger fires.", s: 0,
+          quip: "Feels like leadership. In practice it trains the team to bring you everything." },
+        { t: "Route all incoming requests to your tech lead for a month.", s: 1,
+          quip: "You’ve moved the bottleneck, not removed it." }
       ]
     },
     {
       pillar: "leadership",
       module: "Module 7 · Creating Clarity",
-      q: "A big technical decision needs to be made. Your tech lead and a senior engineer strongly disagree. You…",
+      q: "Your tech lead and a senior engineer strongly disagree on a big technical decision. The team is waiting. You…",
       options: [
-        { t: "Decide myself. I’m the manager, that’s what I’m for.", s: 1,
-          quip: "Fast, but it teaches the team that every hard call comes back to you. Your job is to make sure good decisions get made, not to make them all." },
-        { t: "Let them fight it out. They’ll get there eventually.", s: 0,
-          quip: "Without a clear decision process, “eventually” becomes weeks of friction, with a winner and a loser." },
-        { t: "Escalate to my manager so I don’t have to take sides.", s: 0,
-          quip: "Escalating a decision your team can make shrinks your authority, and theirs." },
-        { t: "Agree who owns the decision, set a deadline and criteria, and back the outcome once it’s made.", s: 3,
-          quip: "That’s structure people can trust: clear ownership, a clear process, and a leader who backs the result." }
+        { t: "Bring in a third senior engineer as a tiebreaker.", s: 1,
+          quip: "Turns a decision into a vote, and someone still walks away the loser." },
+        { t: "Agree who owns the decision and by when, and make it clear you’ll back whatever they decide.", s: 3,
+          quip: "Clear ownership and a deadline end the deadlock without you becoming the bottleneck." },
+        { t: "Ask both to write a design doc and choose the stronger one after review.", s: 2,
+          quip: "Good rigour, but without an owner and a deadline it can become a contest that drags on." },
+        { t: "Make the call yourself to unblock the team, and document your reasoning transparently in the decision log.", s: 1,
+          quip: "Transparent and fast, but it teaches the team that every hard call comes back to you." }
       ]
     },
+
     // ---------------------------------------------------------------- COMMUNICATION
     {
       pillar: "communication",
       module: "Module 5 · Leading with Curiosity",
-      q: "You have to tell your team about a reorg that changes who they report to. How do you do it?",
+      q: "You have to tell your team about a reorg that changes who some of them report to. How do you do it?",
       options: [
-        { t: "One team announcement, same words for everyone. It’s the fairest way.", s: 1,
-          quip: "Consistent, yes. But your anxious senior, your ambitious junior and your sceptical tech lead each heard something different. Communication has to land, not just be sent." },
-        { t: "A Slack post with a 🙏 and “happy to answer any questions”.", s: 0,
-          quip: "Nobody asks questions about their own job security in a public channel. Silence isn’t acceptance." },
-        { t: "Wait until every detail is final, so I don’t create confusion.", s: 1,
-          quip: "The rumour mill doesn’t wait. By the time it’s final, the story has already been told without you." },
-        { t: "Announce it to the team, then hold short 1:1s tailored to what each person will worry about most.", s: 3,
-          quip: "That’s communication that lands with each team member: same facts, different conversations." }
+        { t: "Send a detailed written FAQ first, so everyone gets the same facts at the same time.", s: 2,
+          quip: "Fair and consistent, but a document can’t hear how each person is taking it." },
+        { t: "Tell everyone together, then talk with each person one-to-one about what changes for them and what worries them most.", s: 3,
+          quip: "Same facts for all, then a conversation that lands with each individual." },
+        { t: "Be fully transparent in the team meeting, including the options leadership rejected and why.", s: 1,
+          quip: "Transparency is good; unfiltered detail isn’t. It fuels speculation instead of clarity." },
+        { t: "Wait until every detail is final, to avoid speculation.", s: 0,
+          quip: "The rumour mill doesn’t wait. Silence lets someone else tell the story." }
       ]
     },
     {
       pillar: "communication",
       module: "Module 8 · Future-Proof Leadership",
-      q: "Your team delivered huge impact this year. In your review, your manager mostly remembers the one incident in March. You…",
+      q: "Your team had a strong year, but in your review your manager focuses on one incident in March. You…",
       options: [
-        { t: "Accept it. Good work should speak for itself.", s: 0,
-          quip: "It doesn’t. Being undervalued despite real impact is one of the most common EM traps, and evidence fixes it, not patience." },
-        { t: "Push back hard in the meeting. It’s not fair.", s: 0,
-          quip: "Understandable, but getting emotional in the room makes the incident the story all over again." },
-        { t: "Send a follow-up email listing the wins I can remember.", s: 2,
-          quip: "Better than silence. The jump is having the evidence ready all year, not reconstructing it after the review." },
-        { t: "Walk through a running record of outcomes, metrics and feedback that I’ve kept all year.", s: 3,
-          quip: "That’s an evidence-based case. Recognition goes to the impact people can actually see." }
+        { t: "Acknowledge the incident openly, then walk through the outcomes, metrics and feedback you’ve tracked all year, so the conversation reflects the full picture.", s: 3,
+          quip: "You own the miss and bring the evidence. Credible, not defensive." },
+        { t: "Ask to pause the review so you can prepare a detailed response.", s: 0,
+          quip: "It signals defensiveness, and the story hardens while you prepare." },
+        { t: "Ask peers and stakeholders to send your manager feedback on the year.", s: 2,
+          quip: "Useful input, but late and indirect. The evidence should already be in your hands." },
+        { t: "Accept it gracefully; challenging a review rarely changes the outcome and can come across as defensive.", s: 1,
+          quip: "Graceful, but silence lets one incident define a year of impact." }
       ]
     },
     {
@@ -158,60 +158,60 @@ __root.QUIZ = {
       module: "Module 10 · From Theory to Practice",
       q: "You believe you’re ready for the next level. How do you raise it with your manager?",
       options: [
-        { t: "I don’t. If I’m ready, they’ll notice.", s: 0,
-          quip: "Promotions rarely go to people waiting to be noticed. Your manager is busy with their own career." },
-        { t: "Drop a few hints and hope they pick up on them.", s: 0,
-          quip: "Hints are awkward and easy to ignore. A clear ask is kinder to both of you." },
-        { t: "Tell them I deserve it and that I’ll look elsewhere if it doesn’t happen.", s: 1,
-          quip: "Ultimatums can work once, and they cost you trust. You can be direct without damaging the relationship." },
-        { t: "Ask what the next level looks like to them, show my evidence against it, and agree on the gaps together.", s: 3,
-          quip: "That’s a promotion conversation that strengthens the relationship. You’ve made your manager your ally." }
+        { t: "Wait for the review cycle, when the conversation is expected anyway.", s: 1,
+          quip: "By review time the decisions are often already shaped. Start earlier." },
+        { t: "Ask what they’d need to see, and share your evidence against it.", s: 3,
+          quip: "It makes your manager an ally and turns a request into a shared plan." },
+        { t: "Tell them you’re ready and ask for a timeline.", s: 1,
+          quip: "Direct, but without shared criteria it’s your opinion against theirs." },
+        { t: "Mention an outside conversation you’ve had, so they understand your market value without it sounding like an ultimatum.", s: 0,
+          quip: "However softly it’s said, it lands as a threat and costs trust." }
       ]
     },
-
     {
       pillar: "communication",
-      q: "Your director asks your team to take on an urgent project. You know it will blow up two existing commitments. You…",
+      q: "Your director asks your team to take on an urgent project. It will push out two existing commitments. You…",
       options: [
-        { t: "Say yes. You don’t say no to a director.", s: 0,
-          quip: "Saying yes to everything is how commitments quietly break, and trust erodes on both sides." },
-        { t: "Say no. We’re at capacity.", s: 1,
-          quip: "Honest, but a flat no closes the conversation instead of opening it." },
-        { t: "Say yes, then tell the other stakeholders their work will be late.", s: 1,
-          quip: "You’ve handed the trade-off to people who never got a say in it." },
-        { t: "“Yes, and here’s what it will cost. Which of these two commitments should move?”", s: 3,
-          quip: "That’s pushing back without pushing away. The cost is visible, and the trade-off sits with the person who can make it." }
+        { t: "Agree, and reshuffle the team to absorb it.", s: 0,
+          quip: "The cost is hidden until commitments slip, and then it’s your credibility on the line." },
+        { t: "Agree, and tell them which commitment you’ll drop.", s: 1,
+          quip: "Honest about the cost, but you’ve made a trade-off that isn’t yours to make." },
+        { t: "Ask which of the two existing commitments they’d like to move.", s: 3,
+          quip: "Yes, with the cost made visible, and the trade-off with the person who can make it." },
+        { t: "Push back firmly: the team is at capacity and needs protecting from scope creep.", s: 1,
+          quip: "Protective, but a flat no closes the conversation instead of opening it." }
       ]
     },
     {
       pillar: "communication",
       module: "Module 10 · From Theory to Practice",
-      q: "A talented engineer keeps interrupting colleagues in meetings. People have started going quiet. You…",
+      q: "A talented engineer keeps interrupting colleagues in meetings, and people have started going quiet. You…",
       options: [
-        { t: "Leave it. They’re one of my best engineers.", s: 0,
-          quip: "Not naming a behaviour is a decision too. The team sees you tolerate it, and psychological safety drains away." },
-        { t: "Remind the whole team to “let everyone speak”.", s: 1,
-          quip: "Everyone feels told off except the one person who needed to hear it." },
-        { t: "Save it for their performance review.", s: 0,
-          quip: "Months of silence, then a surprise at review time. That breaks more trust than the original behaviour." },
-        { t: "Raise it privately: the specific moments, the impact on the team, and ask what’s going on for them.", s: 3,
-          quip: "That’s naming the behaviour with care: specific, private and curious. It protects both the team and the relationship." }
+        { t: "Introduce a speaking order in meetings so everyone gets a turn.", s: 2,
+          quip: "A fair system, but it avoids naming the behaviour with the one person who needs to hear it." },
+        { t: "Name it privately and ask what’s behind it.", s: 3,
+          quip: "Specific, private and curious. It protects both the team and the relationship." },
+        { t: "Call it out in the moment, so the team sees you won’t tolerate it.", s: 1,
+          quip: "It sends a signal, but public correction usually creates defensiveness, not change." },
+        { t: "Give it time; they’re a high performer, and these things often settle as the team gels.", s: 0,
+          quip: "Not naming a behaviour is a decision too, and the team sees you tolerate it." }
       ]
     },
+
     // ---------------------------------------------------------------- AI
     {
       pillar: "ai",
       module: "Module 1 · The AI-Ready Mindset",
-      q: "How is AI changing your job as an Engineering Manager?",
+      q: "Where is AI having the biggest impact on your job as an Engineering Manager?",
       options: [
-        { t: "It isn’t. AI is for the engineers.", s: 0,
-          quip: "AI has redefined what the EM role requires: how you decide, communicate and spend your time. The managers who see it first will lead the next generation of teams." },
-        { t: "It’ll make my team faster, so I’ll probably need fewer people.", s: 1,
-          quip: "That’s the headcount view. The bigger shift is in your own work: decisions, conversations and where your week goes." },
-        { t: "It’s a handy productivity tool. I use it now and then for emails and docs.", s: 2,
-          quip: "A good start. The real leverage is using it for the hard parts of the job, not just the writing." },
-        { t: "It’s changing how I decide, prepare and lead, so I’m deliberately rebuilding how I work around it.", s: 3,
-          quip: "That’s the AI-ready mindset. You’re not just adopting a tool, you’re redesigning the role." }
+        { t: "Mostly on my team’s productivity; my own job is about people.", s: 1,
+          quip: "The people side is exactly where AI is changing how managers decide, prepare and communicate." },
+        { t: "In how I make decisions and spend my time.", s: 3,
+          quip: "The role itself is changing, not just the team’s tooling." },
+        { t: "It saves me time on documents, summaries and status updates, which frees me up for more 1:1s.", s: 2,
+          quip: "Real gains, but they’re on the edges of the job, not its hardest parts." },
+        { t: "On team design: with AI, we’ll need fewer engineers, so I’m planning leaner teams.", s: 0,
+          quip: "The headcount view misses the bigger shift: how you lead." }
       ]
     },
     {
@@ -219,45 +219,44 @@ __root.QUIZ = {
       module: "Module 3 · Communicating with AI",
       q: "Tomorrow you have a tough feedback conversation with a senior engineer. How does AI fit into your prep?",
       options: [
-        { t: "It doesn’t. These conversations are human.", s: 1,
-          quip: "The conversation is human. The prep doesn’t have to be. Rehearsing with AI is one of the highest-leverage uses there is." },
-        { t: "I’d have it write the whole script, then read it out.", s: 0,
-          quip: "Reading a script makes you sound like one. AI should sharpen your thinking, not replace your voice." },
-        { t: "I use it to structure my notes so I don’t forget anything.", s: 2,
-          quip: "Useful. Go one step further: have it play the engineer and push back, so you’re ready for the reaction." },
-        { t: "I role-play it: AI plays the engineer, pushes back, and helps me spot where my message is unclear or unfair.", s: 3,
-          quip: "That’s AI as a leadership partner. You walk in prepared for the real conversation, not the ideal one." }
+        { t: "Have it draft what to say, so the message is clear and balanced.", s: 0,
+          quip: "A drafted script sounds like a script. AI should sharpen your thinking, not replace your voice." },
+        { t: "Have it play the engineer, pushback included.", s: 3,
+          quip: "Rehearsal prepares you for the real conversation, not the ideal one." },
+        { t: "Leave it out: feedback should feel authentic, and AI-shaped words can feel generic.", s: 1,
+          quip: "The conversation is human; the preparation doesn’t have to be." },
+        { t: "Use it to structure my points into a feedback framework like SBI, so I don’t miss anything important.", s: 2,
+          quip: "Helpful structure, but it prepares what you’ll say, not how they’ll react." }
       ]
     },
     {
       pillar: "ai",
       module: "Module 4 · Trustworthy AI",
-      q: "You ask AI to help prioritise next quarter. It suggests cutting the project your most senior engineer cares about most. You…",
+      q: "You ask AI to help prioritise next quarter. It recommends cutting the project your most senior engineer cares about most. You…",
       options: [
-        { t: "Cut it. The analysis is the analysis.", s: 0,
-          quip: "AI doesn’t know the history, the people or the politics. Outsource the decision and you own the consequences without having made the call." },
-        { t: "Ignore it. AI doesn’t understand our context.", s: 1,
-          quip: "Fair instinct, but you’ve thrown away a useful challenge to your own assumptions." },
-        { t: "Re-prompt it a few times until it agrees with me.", s: 0,
-          quip: "Prompting until it agrees is just confirmation bias with extra steps." },
-        { t: "Treat it as one input: test the reasoning against what I know about the team and the business, then decide and own it.", s: 3,
-          quip: "That’s trustworthy AI. It informs your judgment and doesn’t replace it. Fast decisions you can stand behind." }
+        { t: "Follow it. It’s less biased than I am.", s: 0,
+          quip: "It’s differently biased: it doesn’t know the history, the people or the politics." },
+        { t: "Test its reasoning against the history, people and context it can’t see, then make the decision yourself and own it.", s: 3,
+          quip: "AI informs your judgment; it doesn’t replace it. You own the call." },
+        { t: "Set it aside; AI can’t weigh people and politics, so it shouldn’t shape this kind of decision.", s: 1,
+          quip: "You’ve thrown away a useful challenge to your own assumptions." },
+        { t: "Share the recommendation with the team and let them debate it openly.", s: 1,
+          quip: "Open, but it can turn into a referendum on a colleague’s project." }
       ]
     },
-
     {
       pillar: "ai",
       module: "Module 2 · AI as Your Leadership Partner",
-      q: "You’re planning next quarter with too many requests and too little capacity. How do you use AI?",
+      q: "You’re planning next quarter with far more requests than capacity. How do you use AI?",
       options: [
-        { t: "I don’t. Planning is a judgment call.", s: 1,
-          quip: "It is, and AI can make your judgment sharper: spotting conflicts, testing scenarios, challenging your assumptions." },
-        { t: "To format the slides once I’ve decided.", s: 1,
-          quip: "Formatting is the least valuable part of planning. Bring AI in while you’re still thinking." },
-        { t: "Paste in every request and ask it what to cut.", s: 0,
-          quip: "Hand over the decision and you own outcomes you never really chose." },
-        { t: "Model scenarios and trade-offs with it, let it challenge my assumptions, then make and own the call.", s: 3,
-          quip: "That’s AI as a leadership partner on capacity, priorities and trade-offs, not just tasks." }
+        { t: "Give it every request and let it rank them by business value.", s: 0,
+          quip: "Hand over the ranking and you own outcomes you never really chose." },
+        { t: "Use it to model scenarios and challenge my assumptions, then make the call myself.", s: 3,
+          quip: "A thinking partner on trade-offs, while the decision stays yours." },
+        { t: "Keep it out of prioritisation, which depends on human judgment and stakeholder context.", s: 1,
+          quip: "True, and AI can still sharpen that judgment." },
+        { t: "Have it turn my priorities into a clear, polished deck for stakeholders.", s: 1,
+          quip: "Nice output, but it comes in after the thinking, where it adds the least." }
       ]
     },
     {
@@ -265,30 +264,31 @@ __root.QUIZ = {
       module: "Module 3 · Communicating with AI",
       q: "Promotion season is coming. How could AI help you build your case?",
       options: [
-        { t: "It couldn’t. Promotions are about relationships.", s: 1,
-          quip: "Relationships matter, but so does evidence. AI is excellent at turning a year of scattered wins into a clear story." },
-        { t: "I’d ask it to write a glowing self-review from scratch.", s: 0,
-          quip: "A generic AI self-review reads like one. Your evidence is the substance. AI helps shape it." },
-        { t: "Polish the wording once I’ve written everything.", s: 2,
-          quip: "Useful. Next level: have it challenge your case, not just polish it." },
-        { t: "Turn my impact log into a clear narrative, then have AI play a sceptical promotion committee to pressure-test it.", s: 3,
-          quip: "That’s communicating with AI at its best: you walk in with a case that has already survived the hard questions." }
+        { t: "Have it write my self-review from my notes, then adjust the tone.", s: 1,
+          quip: "Efficient, but it polishes the case without testing it." },
+        { t: "Ask it to argue against my case the way a sceptical reviewer would.", s: 3,
+          quip: "Your case gets stronger by surviving the hard questions before the real room." },
+        { t: "Use it to benchmark my achievements against typical expectations for the next level.", s: 2,
+          quip: "Useful context, but generic benchmarks miss what your company actually values." },
+        { t: "I wouldn’t: a case about my own work should be in my own words, start to finish.", s: 1,
+          quip: "Your words, yes. AI can still pressure-test them." }
       ]
     },
+
     // ---------------------------------------------------------------- COACHING
     {
       pillar: "coaching",
       module: "Module 5 · Leading with Curiosity",
       q: "Two engineers on your team have both missed their last two deadlines. How do you approach it?",
       options: [
-        { t: "The same conversation with both. Fair is fair.", s: 1,
-          quip: "Same symptom, very different causes. Generic advice fails because people aren’t generic." },
-        { t: "Apply the approach from that management book I read.", s: 0,
-          quip: "Frameworks are a starting point, but advice that ignores the person usually misses. Read the individual first." },
-        { t: "Start with the one I suspect is less committed.", s: 0,
-          quip: "That’s your bias making the first call. The one you assume is “less committed” may just be the one who’s stuck." },
-        { t: "Understand each one separately: what’s really going on, what drives them, and what they need from me.", s: 3,
-          quip: "That’s Unbiased Reading: seeing each person accurately before you decide how to lead them." }
+        { t: "Have the same conversation with both, to be fair and consistent.", s: 1,
+          quip: "Same symptom, different causes. Fair isn’t the same as identical." },
+        { t: "Talk to each of them separately to find out what’s really going on.", s: 3,
+          quip: "That’s Unbiased Reading: understand each person before deciding how to lead them." },
+        { t: "Introduce tighter estimates and mid-sprint check-ins for the whole team.", s: 1,
+          quip: "A process fix for what may be two very different people problems." },
+        { t: "Start with the one who seems less committed, as they’re the bigger risk.", s: 0,
+          quip: "That’s your assumption leading. The one who seems less committed may just be stuck." }
       ]
     },
     {
@@ -296,29 +296,29 @@ __root.QUIZ = {
       module: "Module 9 · Building High-Performing Teams",
       q: "One of your engineers has been underperforming for three months. What’s your plan?",
       options: [
-        { t: "Talk to HR about starting a PIP.", s: 0,
-          quip: "Jumping to a PIP is usually the end of the relationship, not the start of a turnaround. Most underperformance can be fixed much earlier." },
-        { t: "Give them easier work for a while.", s: 1,
-          quip: "Kind in the moment, but it hides the problem and quietly lowers your expectations of them." },
-        { t: "Keep giving feedback and hope it improves.", s: 1,
-          quip: "Without structure, feedback becomes noise. Hope isn’t a system." },
-        { t: "Agree clear, measurable expectations together, check in weekly, and track progress as evidence.", s: 3,
-          quip: "That’s a repeatable turnaround system. You get results nobody can argue with, built on evidence, and usually no PIP needed." }
+        { t: "Agree clear, measurable expectations with them, check in weekly, and track progress together so you can both see whether things are improving.", s: 3,
+          quip: "A shared, measurable plan. Most turnarounds succeed without a PIP." },
+        { t: "Move them to a project that might suit their strengths better.", s: 1,
+          quip: "Sometimes right, but often it relocates the problem without understanding it." },
+        { t: "Start documenting everything carefully now, in case HR needs to get involved later on.", s: 0,
+          quip: "Prudent-sounding, but it’s preparing for an exit, not a turnaround." },
+        { t: "Pair them with a strong senior engineer for a quarter.", s: 2,
+          quip: "Support helps, but without clear expectations neither of them knows what success looks like." }
       ]
     },
     {
       pillar: "coaching",
       module: "Module 7 · Creating Clarity",
-      q: "If you asked your team “Do you know where your career is heading here?”, most would say…",
+      q: "Your 1:1 notes show nobody on the team has talked about growth in months. What’s your first move?",
       options: [
-        { t: "“Career? I just close tickets.”", s: 0,
-          quip: "If nobody can see a path, your best people will find one somewhere else." },
-        { t: "“We talked about it once, at my review.”", s: 1,
-          quip: "One conversation a year isn’t a path. Growth needs a regular rhythm." },
-        { t: "“Kind of. My manager knows what I want.”", s: 2,
-          quip: "Close. Now get it out of your head and onto paper, written with them." },
-        { t: "“Yes. We built a plan together and we revisit it every month.”", s: 3,
-          quip: "That’s Creating Clarity: understanding what drives each person and building their path forward with them." }
+        { t: "Share the career framework so everyone knows what’s expected at each level.", s: 1,
+          quip: "Useful reference, but a framework isn’t a conversation about what each person wants." },
+        { t: "Ask each person what they want next, and plan it together.", s: 3,
+          quip: "That’s Creating Clarity: understand what drives each person, and build the path with them." },
+        { t: "Add a quarterly growth check-in to everyone’s calendar.", s: 2,
+          quip: "Good rhythm, but it starts with the format instead of the person." },
+        { t: "Wait for review season, when people expect growth conversations anyway.", s: 0,
+          quip: "Growth once a year isn’t growth. People notice the silence in between." }
       ]
     },
     {
@@ -326,14 +326,14 @@ __root.QUIZ = {
       module: "Module 9 · Building High-Performing Teams",
       q: "An engineer’s change caused a production incident. In the retro, you…",
       options: [
-        { t: "Make it clear who caused it, so it doesn’t happen again.", s: 0,
-          quip: "Naming and shaming guarantees the next incident gets hidden. Psychological safety is a performance tool, not a nice-to-have." },
-        { t: "Skip the retro and quietly fix the gaps myself.", s: 0,
-          quip: "You’ve protected the person but lost the lesson, and taught everyone that problems get swept under the rug." },
-        { t: "Hold the retro, but leave the engineer out to spare their feelings.", s: 1,
-          quip: "Kind intent, but you’ve taken away their chance to learn and to be part of the fix." },
-        { t: "Run a blameless retro on what in our system let it happen, and thank the engineer for owning it.", s: 3,
-          quip: "That’s how psychological safety gets built: people raise problems early because they’ve seen what happens when they do." }
+        { t: "Focus on what in the system let it happen.", s: 3,
+          quip: "Blameless and systemic. People raise problems early when they’ve seen this." },
+        { t: "Keep the engineer’s name out of it entirely, to protect them.", s: 1,
+          quip: "Kind intent, but it can make the incident feel shameful and unspeakable." },
+        { t: "Add a mandatory second reviewer for every change to that service.", s: 1,
+          quip: "Feels rigorous, but it jumps to a fix before understanding the cause." },
+        { t: "Ask the engineer to walk the team through what went wrong, so they own the learning.", s: 0,
+          quip: "Framed as ownership, felt as a public trial. That’s how the next incident gets hidden." }
       ]
     },
     {
@@ -341,14 +341,14 @@ __root.QUIZ = {
       module: "Module 5 · Leading with Curiosity",
       q: "Your quietest engineer barely says anything in your 1:1s. You…",
       options: [
-        { t: "Assume they’re fine. No news is good news.", s: 0,
-          quip: "Quiet isn’t the same as fine. Some of your best people won’t tell you they’re unhappy until they resign." },
-        { t: "Fill the silence with updates so it isn’t awkward.", s: 1,
-          quip: "Now it’s your meeting, not theirs. Silence is often where the real conversation starts." },
-        { t: "Tell them they need to speak up more.", s: 1,
-          quip: "Asking someone to be a different person rarely works. Change the format before you ask them to change." },
-        { t: "Try different formats (a walk, written notes beforehand, specific questions) until I find what works for them.", s: 3,
-          quip: "That’s Unbiased Reading in practice: you adapt to the person instead of expecting them to adapt to you." }
+        { t: "Respect their style; some people simply prefer fewer words.", s: 1,
+          quip: "Quiet isn’t always a style. Sometimes it’s a signal." },
+        { t: "Send a short questionnaire before each 1:1 so they can prepare their thoughts.", s: 2,
+          quip: "A thoughtful idea, and one format among many to try." },
+        { t: "Change the format until you find what works for them.", s: 3,
+          quip: "Adapt to the person instead of expecting them to adapt to you." },
+        { t: "Ask them directly why they don’t speak up more.", s: 0,
+          quip: "Well meant, but it puts the problem on them and makes the silence heavier." }
       ]
     }
   ],
@@ -377,17 +377,17 @@ __root.QUIZ = {
         actions: [
           "Take on a cross-team initiative where you have no formal authority.",
           "Write the 12-month narrative for your area and pitch it to your skip-level.",
-          "Grow a successor. Director seats go to people who’ve already replaced themselves."
+          "Grow a successor, so your team keeps thriving even when you’re not in the room."
         ]
       }
     },
     communication: {
       low: {
-        text: "Your team does real work, but your message doesn’t land: it’s either one-size-fits-all, or it never reaches the people who decide on recognition and promotions.",
+        text: "Your team does real work, but your message doesn’t land: it’s either one-size-fits-all, or it never reaches the people who need to see your team’s impact.",
         actions: [
           "Start a running “impact log” today: outcomes, metrics and quotes. Add to it every Friday.",
           "For your next big announcement, follow it with short 1:1s tailored to each person.",
-          "Book a career conversation with your manager and ask, “What does the next level look like to you?”"
+          "Ask your manager: “What would you like to hear more about from my team?”"
         ]
       },
       mid: {
@@ -395,7 +395,7 @@ __root.QUIZ = {
         actions: [
           "Before any important message, write down who it’s for and what you need them to do.",
           "Share a monthly 5-bullet update with your manager: wins, risks, asks.",
-          "Rehearse your promotion case out loud (with AI or a peer) before you need it."
+          "Rehearse your next difficult conversation out loud (with AI or a peer) before you have it."
         ]
       },
       high: {
@@ -425,7 +425,7 @@ __root.QUIZ = {
         ]
       },
       high: {
-        text: "You’re already leading the AI-era way: AI informs your judgment, it doesn’t replace it. Leaders who can model this are exactly who gets the next seat.",
+        text: "You’re already leading the AI-era way: AI informs your judgment, it doesn’t replace it. Leaders who model this help their whole team work smarter.",
         actions: [
           "Share your AI workflows with your peers. Become the EM others learn from.",
           "Write your point of view on how AI changes the EM role in your org.",
@@ -455,7 +455,7 @@ __root.QUIZ = {
         actions: [
           "Coach your senior engineers on how to read and mentor others.",
           "Sponsor, don’t just mentor: put your people’s names in rooms they’re not in.",
-          "Build evidence-based promotion cases with each report."
+          "Help each report keep an evidence-based record of their growth and impact."
         ]
       }
     }
@@ -470,7 +470,7 @@ __root.QUIZ = {
     communication: {
       emoji: "🥷", name: "The Silent Shipper",
       line: "Your team delivers miracles. Nobody upstairs knows.",
-      desc: "You do the work. You don’t tell the story. When promotion committees decide, untold stories don’t count. Your growth edge is advocating for yourself and your team with evidence."
+      desc: "You do the work. You don’t tell the story. When budgets and priorities are decided, untold stories don’t count. Your growth edge is making your team’s impact visible, with evidence."
     },
     ai: {
       emoji: "📠", name: "The Analog Legend",
@@ -487,32 +487,32 @@ __root.QUIZ = {
       line: "Holding it all together with duct tape and cold brew.",
       desc: "You’re doing the job, and the job is doing you. That isn’t a talent problem: nobody retrained you for this version of the job. The good news is that each pillar has quick wins, and you’ll feel them within weeks."
     },
-    director: {
-      emoji: "🚀", name: "The Director-in-Waiting",
-      line: "Honestly? You’re dangerous. Let’s aim you somewhere.",
-      desc: "Strong across the board. What stands between you and the next title probably isn’t skill. It’s visibility, scope, and a deliberate promotion strategy."
+    multiplier: {
+      emoji: "🚀", name: "The Team Multiplier",
+      line: "Your team is lucky to have you. Let’s make it last.",
+      desc: "Strong across the board. Your next gains won’t come from working harder. They’ll come from scaling what works: growing leaders on your team and spreading your practices beyond it."
     }
   },
 
   stages: [
-    { min: 0,  name: "Survival Mode", goal: "a calm, confident EM", line: "You’re doing the job. The job is also doing you." },
-    { min: 40, name: "Solid EM", goal: "Senior EM", line: "Reliable and respected. Now it’s time to build leverage." },
-    { min: 60, name: "Senior EM Material", goal: "your Senior EM promotion", line: "You’re operating above your title in places." },
-    { min: 80, name: "Director Trajectory", goal: "Director", line: "The skills are there. Now it’s about scope and story." }
+    { min: 0,  name: "Survival Mode", line: "You’re doing the job. The job is also doing you." },
+    { min: 40, name: "Steady Hand", line: "Your team can count on you. Now build leverage, so it doesn’t all run through you." },
+    { min: 60, name: "Team Builder", line: "You’re making your team better than the sum of its parts." },
+    { min: 80, name: "Thriving Team", line: "Your team is productive, connected and growing. Now make it last." }
   ],
 
   ladder: {
-    leadership:    ["Runs a team well", "Makes trade-offs visible & owned", "Sets direction for teams of teams"],
-    communication: ["Clear status updates", "Lands messages per person & self-advocates", "Shapes the narrative with execs"],
-    ai:            ["Uses AI for emails & docs", "Uses AI to prep decisions & hard talks", "Leads the org into AI-era leadership"],
-    coaching:      ["Holds regular 1:1s", "Reads people accurately & turns them around", "Builds managers & a coaching culture"]
+    leadership:    ["Keeps the team running day to day", "Makes trade-offs visible and owned by the right people", "Builds a team that runs well without them"],
+    communication: ["Shares clear, regular updates", "Tailors the message so it lands with each person", "Makes the team’s impact visible across the company"],
+    ai:            ["Uses AI for emails and docs", "Uses AI to prep decisions and hard conversations", "Leads the team into AI-assisted ways of working"],
+    coaching:      ["Holds regular 1:1s", "Reads each person accurately and turns struggles around", "Builds a culture where people grow and coach each other"]
   },
 
   analyzing: [
     "Counting your unanswered Slack DMs…",
     "Cross-referencing your calendar with reality…",
     "Reading your answers without bias…",
-    "Measuring your distance to Director…",
+    "Measuring your team’s potential…",
     "Writing your personal growth plan…"
   ]
 };

@@ -18,7 +18,7 @@
     const focus = sorted[0];
     const strength = sorted[sorted.length - 1];
     let archKey = focus;
-    if (pct[focus] >= 78) archKey = "director";
+    if (pct[focus] >= 78) archKey = "multiplier";
     else if (pct[strength] < 40) archKey = "survivor";
     const stageIdx = Q.stages.reduce((acc, s, i) => (overall >= s.min ? i : acc), 0);
     return { pct, overall, focus, strength, archKey, arch: Q.archetypes[archKey], band, stageIdx };
