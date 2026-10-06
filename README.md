@@ -71,6 +71,27 @@ Then open `email-preview.html` (with the local server running, so the logo and p
 
 Until the variables are set, the quiz works normally and simply doesn’t send the email. To turn the email off entirely, set `resultsEndpoint` in `config.js` to `""`.
 
+## Analytics
+
+Vercel Web Analytics is loaded with Vercel’s plain-HTML snippet in `index.html` (the `@vercel/analytics` `<Analytics />` component needs React; this site has no framework). Turn it on in Vercel: **Project → Analytics → Enable**. Page views, visitors, referrers, countries and devices then appear automatically. It’s cookieless.
+
+The quiz also sends custom events (no names or emails, ever):
+
+| Event | Data |
+|---|---|
+| `avatar_select` | `avatar` |
+| `quiz_start` | `avatar` |
+| `section_complete` | `section`, `position` (1–4) |
+| `quiz_complete` | `seconds` taken |
+| `email_submit` | `archetype`, `focus` |
+| `results_view` | `archetype`, `score` |
+| `booking_click` | `seconds_on_results` |
+| `social_click` | `network` |
+| `pdf_save` | none |
+| `page_exit` | `screen` they left from, `seconds` on the page |
+
+Custom events appear under **Analytics → Events** and need a Vercel Pro (or Enterprise) plan; on Hobby only the standard page analytics are recorded. The script only exists on Vercel, so nothing is recorded locally.
+
 ## Deploy
 
 Use **Vercel** or **Netlify** so the email function runs. On Netlify, `netlify.toml` already routes `/api/*` to the function. Purely static hosts (GitHub Pages, Netlify Drop) can serve the quiz, but they can’t send the email.

@@ -13,6 +13,12 @@
   const wait = (ms) => new Promise((r) => setTimeout(r, reduceMotion ? Math.min(ms, 150) : ms));
   const pv = (p) => `--c:${Q.pillars[p].color};--ci:${Q.pillars[p].ink}`;
 
+  // Vercel Web Analytics custom events. Values must be strings, numbers or booleans;
+  // keep to two properties per event and never send personal data (no emails or names).
+  const track = (name, data) => { try { window.va && window.va("event", data ? { name, data } : { name }); } catch (e) {} };
+  const secondsSince = (t) => Math.round((Date.now() - t) / 1000);
+  const pageLoadedAt = Date.now();
+
   const state = { idx: 0, answers: [], done: {}, avatar: "m", phase: "intro", awaitingNext: false, lead: null };
 
   /* ---------- config into DOM ---------- */
@@ -161,6 +167,7 @@
     });
   }
   function chooseAvatar(v) {
+    if (v !== state.avatar) track("avatar_select", { avatar: v === "f" ? "female" : "male" });
     state.avatar = v;
     try { localStorage.setItem("emq-avatar", v); } catch (e) {}
     const next = person(v);
@@ -244,6 +251,8 @@
     );
     state.idx = 0;
     state.answers = [];
+    state.startedAt = Date.now();
+    track("quiz_start", { avatar: state.avatar === "f" ? "female" : "male" });
     state.done = Object.fromEntries(PILLARS.map((p) => [p, 0]));
     resetGate();
     buildSheet();
@@ -326,6 +335,7 @@
     // Answer quality plays no part here; it's only assessed in the results.
     const p = q.pillar;
     const n = ++state.done[p], total = perPillar(p);
+    if (n === total) track("section_complete", { section: Q.pillars[p].name, position: state.order.indexOf(p) + 1 });
     let delay = 650;
     if (n === Math.ceil(total / 2) || n === total) {
       await wait(250);
@@ -357,6 +367,7 @@
 
   /* ---------- analyzing ---------- */
   async function analyze() {
+    track("quiz_complete", { seconds: secondsSince(state.startedAt) });
     show("analyzing");
     updateSheet();
     const ul = $("#analyze-steps");
@@ -431,7 +442,10 @@
     };
     // Honeypot: bots fill hidden fields. Pretend success, send nothing.
     const human = !f.company_website.value;
-    if (human) await sendLead(payload);
+    if (human) {
+      track("email_submit", { archetype: r.arch.name, focus: Q.pillars[r.focus].name });
+      await sendLead(payload);
+    }
     // Email the formatted report in the background; the results don't wait for it.
     const emailed = human ? sendResultsEmail(email, firstName) : Promise.resolve(false);
 
@@ -687,7 +701,7 @@
             <h2>Reading this report is the easy part. Acting on it is where people stall.</h2>
             <p class="pitch">${esc(CFG.programPitch)}</p>
             <ul>${CFG.programBullets.map((b) => `<li>${esc(b)}</li>`).join("")}</ul>
-            <a class="btn btn-primary btn-xl" href="${esc(CFG.bookingUrl)}" target="_blank" rel="noopener">${esc(CFG.ctaLabel)} <span class="arrow">→</span></a>
+            <a class="btn btn-primary btn-xl" href="${esc(CFG.bookingUrl)}" target="_blank" rel="noopener" data-track="booking_click">${esc(CFG.ctaLabel)} <span class="arrow">→</span></a>
           </div>
           <div class="coach-side">
             ${CFG.coachPhoto ? `<img class="avatar" src="${esc(CFG.coachPhoto)}" alt="${esc(CFG.coachName)}" />` : `<div class="avatar">${esc(initials)}</div>`}
@@ -705,6 +719,8 @@
 
     $("#res-char").appendChild(characterFor());
     state.result = r;
+    state.resultsAt = Date.now();
+    track("results_view", { archetype: r.arch.name, score: r.overall });
     show("results");
     radar.animate($("#results .radar"), r.pct);
     countUp($("#overall-num"), r.overall);
@@ -796,7 +812,7 @@
     const links = Object.keys(SOCIAL_ICONS).filter((k) => CFG.socials && CFG.socials[k]);
     if (!links.length) return "";
     return `<div class="socials">${links.map((k) => `
-      <a class="social social-${k}" href="${esc(CFG.socials[k])}" target="_blank" rel="noopener" aria-label="${esc(CFG.coachName)} on ${SOCIAL_ICONS[k].label}" title="${SOCIAL_ICONS[k].label}">
+      <a class="social social-${k}" href="${esc(CFG.socials[k])}" target="_blank" rel="noopener" data-track="social_click" data-network="${k}" aria-label="${esc(CFG.coachName)} on ${SOCIAL_ICONS[k].label}" title="${SOCIAL_ICONS[k].label}">
         <svg viewBox="0 0 24 24" aria-hidden="true">${SOCIAL_ICONS[k].svg}</svg>
       </a>`).join("")}</div>`;
   }
@@ -811,6 +827,11 @@
   }
 
   document.addEventListener("click", (e) => {
+    const tracked = e.target.closest("[data-track]");
+    if (tracked) {
+      const data = tracked.dataset.network ? { network: tracked.dataset.network } : { seconds_on_results: secondsSince(state.resultsAt || Date.now()) };
+      track(tracked.dataset.track, data);
+    }
     const opt = e.target.closest(".opt");
     if (opt) return pick(+opt.dataset.k);
     const a = e.target.closest("[data-action]");
@@ -820,7 +841,7 @@
     else if (act === "avatar") chooseAvatar(a.dataset.avatar);
     else if (act === "chapter-go") next();
     else if (act === "home") { e.preventDefault(); if (state.phase !== "results" || confirm("Leave your results?")) show("intro"); }
-    else if (act === "print") { $$("details.review").forEach((d) => (d.open = true)); window.print(); }
+    else if (act === "print") { track("pdf_save"); $$("details.review").forEach((d) => (d.open = true)); window.print(); }
   });
 
   document.addEventListener("keydown", (e) => {
@@ -833,6 +854,14 @@
       if (document.activeElement && document.activeElement.matches("[data-action]")) return;
       e.preventDefault(); next();
     }
+  });
+
+  // Time on page and where people leave: sent once when the tab is closed or hidden for good.
+  let exitTracked = false;
+  addEventListener("pagehide", () => {
+    if (exitTracked) return;
+    exitTracked = true;
+    track("page_exit", { screen: state.phase, seconds: secondsSince(pageLoadedAt) });
   });
 
   observeReveals();
